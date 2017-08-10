@@ -120,6 +120,11 @@ namespace Interview_Exercise_Tests
             return MockRepository.GenerateStub<T>();
         }
 
+        protected T Mock<T>() where T : class
+        {
+            return MockRepository.GenerateMock<T>();
+        }
+
         protected virtual bool HandleArrangeException(Exception ex)
         {
             return false;

@@ -1,0 +1,75 @@
+﻿using System;
+using NUnit.Framework;
+
+namespace Interview_Exercise_Tests.UnitTests
+{
+    public class SampleTest
+    {
+        public class When_an_exception_is_thrown : TestFixtureBase
+        {
+            private string _expectedMessage;
+
+            protected override void Arrange()
+            {
+                _expectedMessage = "exception was thrown";
+            }
+
+            protected override void Act()
+            {
+                throw new Exception(_expectedMessage);
+            }
+
+            [Test]
+            public void Should_set_actual_exception()
+            {
+                Assert.That(ActualException, Is.Not.Null);
+            }
+
+            [Test]
+            public void Should_have_expected_message()
+            {
+                Assert.That(ActualException.Message, Is.EqualTo(_expectedMessage));
+            }
+        }
+
+        public class When_testing_an_interface_with_a_mock : TestFixtureBase
+        {
+            
+        }
+
+        public class When_testing_a_concrete_class : TestFixtureBase
+        {
+            private DoSomthing _sut;
+            private bool _result;
+
+            protected override void Arrange()
+            {
+                _sut = new DoSomthing();
+            }
+
+            protected override void Act()
+            {
+                _result = _sut.Execute();
+            }
+
+            [Test]
+            public void Should_executed_with_success()
+            {
+                Assert.That(_result, Is.True);
+            }
+        }
+
+        private class DoSomthing : IDoSomthing
+        {
+            public bool Execute()
+            {
+                return true;
+            }
+        }
+
+        private interface IDoSomthing
+        {
+            bool Execute();
+        }
+    }
+}
