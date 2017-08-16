@@ -13,7 +13,7 @@ The focus of this exercise is primarily on software design and evolution, and no
 Writing unit and/or integration tests is very important to us.  However, sometimes writing these tests can actually take more time than developing the code under test (which is why many people don't bother).  In the interest of both your time and ours, we would like you to demonstrate just a representative sampling of unit and integration tests, and then simply "stub" out the other scenarios and test methods that you feel should be added to adequately test the requirements (i.e. create the classes and methods on the test fixtures following the style we have provided in _SampleTests.cs_, but don't actually feel compelled to implement them).
 
 ## Development Assignment
-In this exercise, you will build a simple `CountryRepository` class capable of reading and writing country codes and names to and from persistent storage.
+In this exercise, you will build a simple `CountryCodeRepository` class capable of reading and writing country codes and names to and from persistent storage.
 
 ### Feature Name: CountryRepository
 
