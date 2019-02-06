@@ -1,4 +1,4 @@
-﻿namespace Interview_Exercise_Tests.IntegrationTests
+﻿namespace InterviewExercise.Tests.IntegrationTests
 {
     public class SampleIntegrationTest
     {

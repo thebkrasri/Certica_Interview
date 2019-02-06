@@ -48,3 +48,7 @@ packages/
 bin/*
 obj/*
 *.exe
+
+
+#Visual Studio
+.vs/*

@@ -1,9 +1,10 @@
 ﻿using System;
+using Moq;
 using NUnit.Framework;
-using Rhino.Mocks;
 
-namespace Interview_Exercise_Tests.UnitTests
+namespace InterviewExercise.Tests.UnitTests
 {
+    [TestFixture]
     public class SampleTest
     {
         public class When_testing_a_class : TestFixtureBase
@@ -24,24 +25,24 @@ namespace Interview_Exercise_Tests.UnitTests
 
         public class When_testing_a_class_with_a_dependency : TestFixtureBase
         {
-            private IDependency _suppliedDependency;
+            private Mock<IDependency> _suppliedDependency;
 
             protected override void Arrange()
             {
-                _suppliedDependency = Mock<IDependency>();
-                _suppliedDependency.Expect(x => x.Execute()).Return(false);
+                _suppliedDependency = new Mock<IDependency>();
+                _suppliedDependency.Setup(x => x.Execute()).Returns(false);
             }
 
             protected override void Act()
             {
-                 var testSubject = new Thing(_suppliedDependency);
+                 var testSubject = new Thing(_suppliedDependency.Object);
                  testSubject.DoTheThing();
             }
 
             [Test]
             public void Should_have_used_the_dependency()
             {
-                _suppliedDependency.AssertWasCalled(x => x.Execute(), y=> y.Repeat.Once());
+                _suppliedDependency.Verify(x => x.Execute(), Times.Once());
             }
         }
 
